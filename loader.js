@@ -7,7 +7,6 @@
 
     const floatBtnStyle = floatBtn.style;
     floatBtnStyle.position = "fixed";
-    // floatBtnStyle.display = "none";
     floatBtnStyle.bottom = "20px";
     floatBtnStyle.right = "20px";
     floatBtnStyle.zIndex = 123654;
@@ -53,52 +52,7 @@
 
     const greeting = script.getAttribute("data-greeting");
 
-    const api = {
-      sendMessage: (message) => {
-        iframe.contentWindow.postMessage(
-          {
-            sendMessage: message,
-          },
-          "http://localhost:3000"
-        );
-      },
-
-      show: () => {
-        widget.style.display = "block";
-      },
-
-      hide: () => {
-        widget.style.display = "none";
-      },
-
-      toggle: () => {
-        const display = window.getComputedStyle(widget, null).display;
-        widget.style.display = display === "none" ? "block" : "none";
-      },
-
-      onHide: () => {},
-    };
-
-    iframe.addEventListener("load", () => {
-      window.addEventListener("getWidgetApi", () => {
-        const event = new CustomEvent("widgetApi", { detail: api });
-        window.dispatchEvent(event);
-      });
-
-      // window.addEventListener("message", (evt) => {
-      //   if (evt.origin !== "http://localhost:3000/chat") {
-      //     return;
-      //   }
-
-      //   if (evt.data === "hide") {
-      //     api.hide();
-      //     api.onHide();
-      //   }
-      // });
-
-      iframe.contentWindow.postMessage({ greeting }, "http://localhost:3000");
-      widgetStyle.display = "block";
-    });
+    iframe.addEventListener("load", () => {});
 
     const license = script.getAttribute("data-license");
     const widgetUrl = `http://localhost:3000/chat`;
