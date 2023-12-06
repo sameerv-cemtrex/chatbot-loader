@@ -6,23 +6,24 @@
     const floatBtn = document.createElement("div");
 
     const floatBtnStyle = floatBtn.style;
-    floatBtnStyle.position = "absolute";
-    floatBtnStyle.bottom = "30px";
-    floatBtnStyle.right = "30px";
+    floatBtnStyle.position = "fixed";
+    // floatBtnStyle.display = "none";
+    floatBtnStyle.bottom = "20px";
+    floatBtnStyle.right = "20px";
     floatBtnStyle.zIndex = 123654;
-    floatBtnStyle.width = "50px";
-    floatBtnStyle.height = "50px";
+    floatBtnStyle.width = "40px";
+    floatBtnStyle.height = "40px";
     floatBtnStyle.borderRadius = "25px";
-    floatBtnStyle.background = "red";
+    floatBtnStyle.background = "#0f0";
 
     const widgetStyle = widget.style;
     widgetStyle.display = "none";
     widgetStyle.boxSizing = "border-box";
     widgetStyle.width = "350px";
     widgetStyle.height = "450px";
-    widgetStyle.position = "absolute";
-    widgetStyle.bottom = "35px";
-    widgetStyle.right = "20px";
+    widgetStyle.position = "fixed";
+    widgetStyle.bottom = "65px";
+    widgetStyle.right = "35px";
 
     const iframe = document.createElement("iframe");
 
@@ -41,7 +42,14 @@
 
     widget.appendChild(iframe);
     document.body.appendChild(floatBtn);
-    window.console.log("hey");
+
+    floatBtn.addEventListener("click", function () {
+      if (widgetStyle.display == "none") {
+        widgetStyle.display = "block";
+      } else {
+        widgetStyle.display = "none";
+      }
+    });
 
     const greeting = script.getAttribute("data-greeting");
 
